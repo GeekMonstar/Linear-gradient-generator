@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couleurs fun JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="colors-container">
+            <div class="color-item">
+                <input type="color" id="color-1" class="color"/>
+                <label for="color-1" class="color-txt">#FF5F6D</label>
+            </div>
+            <div class="color-item">
+                <input type="color" id="color-2" class="color" />
+                <label for="color-2" class="color-txt">#FFC371</label>
+            </div>
+            <div class="slide-item">
+                <p class="angle-txt">Orientation: <span class="angle-value">90°</span></p>
+                <input type="range" min="0" max="360" id="angle"/>
+            </div>
+            <div class="btns">
+                <button class="btn random-btn">Random</button>
+                <button class="btn copy-btn">Copier</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
