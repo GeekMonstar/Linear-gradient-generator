@@ -74,6 +74,13 @@ input[type=range]{
 .btn:focus{
   box-shadow: none;
 }
+.copy-btn {
+  box-shadow: none;
+}
+.copy-btn.active{
+  background: rgb(27, 169, 27);
+  color: white;
+}
 .angle-txt{
   width: fit-content;
   padding: 10px;

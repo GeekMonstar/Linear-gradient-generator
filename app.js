@@ -40,10 +40,16 @@ function handleRandom() {
     update();
 }
 
-function handleCopy() {
+function handleCopy(e) {
     const { color1, color2, angle } = state;
     const gradient = `background: linear-gradient(${angle}deg, ${color1}, ${color2})`;
     navigator.clipboard.writeText(gradient);
+    e.target.classList.add('active');
+    e.target.textContent = 'Copié';
+    setTimeout(()=>{
+        e.target.classList.remove('active');
+        e.target.textContent = 'Copier';
+    }, 2000);
 }
 
 function start() {
@@ -63,6 +69,10 @@ function update() {
         color2: colors[1].value,
         angle: parseInt(range.value)
     }
+    colors[0].value = state.color1;
+    colors[1].value = state.color2;
+    labels[0].textContent = state.color1;
+    labels[1].textContent = state.color2;
     const { color1, color2, angle } = state;
     body.style.background = `linear-gradient(${angle}deg, ${color1}, ${color2})`;
 }
