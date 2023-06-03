@@ -6,8 +6,8 @@ const angleLabel = document.querySelector('.angle-value');
 const randomBtn = document.querySelector('.random-btn');
 const copyBtn = document.querySelector('.copy-btn');
 let state = {
-    color1: '#FF0000',
-    color2: '#006EFF',
+    color1: '#fd84a8',
+    color2: '#449e81',
     angle: 90
 }
 
