@@ -1,7 +1,7 @@
 const body = document.body;
-const colors = document.querySelectorAll('.color');
+const colors = [...document.querySelectorAll('.color-input-group')].map(color => new ColorInputGroup(color));
+console.log(colors);
 const range = document.querySelector('#angle');
-const labels = document.querySelectorAll('label');
 const angleLabel = document.querySelector('.angle-value');
 const randomBtn = document.querySelector('.random-btn');
 const copyBtn = document.querySelector('.copy-btn');
@@ -10,18 +10,27 @@ let state = {
     color2: '#449e81',
     angle: 90
 }
-
+console.dir(toHSL('#fd84a8'));
 start();
 generateHex();
 
-for (let i = 0; i < colors.length; i++){
-    colors[i].addEventListener('input', e => {handleColorChange(e, labels[i])});
-}
+
+colors.forEach((color) => {
+    color.input.addEventListener('change', (e) => {
+        color.setValue(e.target.value, () => {
+            update();
+        });
+        handleColorChange(e, color.label);
+    });
+})
+// for (let i = 0; i < colors.length; i++){
+//     colors[i].addEventListener('input', e => {(e, labels[i])});
+// }
 
 range.addEventListener('input', handleAngleChange);
 
-randomBtn.addEventListener('click', handleRandom);
-copyBtn.addEventListener('click', handleCopy);
+// randomBtn.addEventListener('click', handleRandom);
+// copyBtn.addEventListener('click', handleCopy);
 
 function handleColorChange(event, element){
     element.textContent = event.target.value;
@@ -54,13 +63,9 @@ function handleCopy(e) {
 
 function start() {
     const { color1, color2, angle } = state;
-    colors[0].value = state.color1;
-    colors[1].value = state.color2;
-    labels[0].textContent = state.color1;
-    labels[1].textContent = state.color2;
-    range.value = state.angle;
-    angleLabel.textContent = state.angle;
-    body.style.background = `linear-gradient(${angle}deg, ${color1}, ${color2})`;
+    colors[0].setValue(state.color1, update);
+    colors[1].setValue(state.color2, update);
+    console.log(colors);
 }
 
 function update() {
@@ -69,10 +74,6 @@ function update() {
         color2: colors[1].value,
         angle: parseInt(range.value)
     }
-    colors[0].value = state.color1;
-    colors[1].value = state.color2;
-    labels[0].textContent = state.color1;
-    labels[1].textContent = state.color2;
     const { color1, color2, angle } = state;
     body.style.background = `linear-gradient(${angle}deg, ${color1}, ${color2})`;
 }
