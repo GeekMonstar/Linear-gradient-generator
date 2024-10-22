@@ -6,8 +6,9 @@
     <title>Couleurs fun JavaScript</title>
     <link rel="stylesheet" href="./style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./AppManager.js" defer></script>
     <script src="./lib.js" defer></script>
-    <!-- <script type="module" src="app.js" defer></script> -->
+    <script type="module" src="app.js" defer></script>
 </head>
 <body class="h-screen flex justify-center items-center">
     <div class="container sm:w-screen md:w-3/12 flex flex-col gap-5 p-10 md:rounded-2xl md:border-2 md:border-zinc-300">
@@ -15,17 +16,17 @@
         <div class="params flex flex-col gap-2">
             <div class="color-input-group flex flex-col">
                 <label for="color-1">Color 1</label>
-                <input class="w-full rounded p-1 min-h-10" type="color" name="" class="color" id="color-1">
+                <input class="w-full rounded p-1 min-h-10" type="color" name="" id="color-1">
             </div>
             <div class="color-input-group flex flex-col">
                 <label for="color-2">Color 2</label>
-                <input class="w-full rounded p-1 min-h-10" type="color" name="" class="color" id="color-2">
+                <input class="w-full rounded p-1 min-h-10" type="color" name="" id="color-2">
             </div>
             <div class="input-group flex flex-col">
                 <label for="angle">Angle:</label>
-                <input class="w-full" type="range" name="angle" id="angle">
+                <input class="w-full" type="range" min="0" max="360" name="angle" id="angle">
             </div>
-            <div class="input-group flex flex-col">
+            <!-- <div class="input-group flex flex-col">
                 <label>Type:</label>
                 <div class="flex gap-5">
                     <div class="flex gap-2">
@@ -33,19 +34,19 @@
                         <label for="linear">Lineaire</label>
                     </div>
                     <div class="flex gap-2">
-                        <input class="w-full" type="radio" name="type" id="circular">
+                        <input class="w-full" type="radio" name="type" id="circular"disabled >
                         <label for="circular">Circulaire</label>
                     </div>
                 </div>
-            </div>
-            <button class="w-full border-2 border-black rounded bg-black text-white p-2">Générer un degrader aléatoire</button>
+            </div> -->
+            <button id="random" class="w-full border-2 border-black rounded bg-black text-white p-2">Générer un degrader aléatoire</button>
             <div id="box" class="w-full h-64 bg-slate-600 rounded-lg"></div>
             <p class="text-md font-medium">Code CSS</p>
             <div class="w-full flex gap-2">
                 <div class="overflow-x-scroll w-full p-2 border-zinc-300 border-2 rounded">
-                    <p class="w-max">background: linear-gradient(to right, #aeadad, #3939fe);</p>
+                    <p id="css" class="w-max">background: linear-gradient(to right, #aeadad, #3939fe);</p>
                 </div>
-                <button class="bg-black p-2 rounded">
+                <button id="copy" class="bg-black p-2 rounded transition-all">
                     <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h167q11-35 43-57.5t70-22.5q40 0 71.5 22.5T594-840h166q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560h-80v120H280v-120h-80v560Zm280-560q17 0 28.5-11.5T520-800q0-17-11.5-28.5T480-840q-17 0-28.5 11.5T440-800q0 17 11.5 28.5T480-760Z"/></svg>
                 </button>
             </div>
